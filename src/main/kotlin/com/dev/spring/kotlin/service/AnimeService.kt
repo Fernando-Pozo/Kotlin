@@ -21,6 +21,10 @@ class AnimeService(
         return animeRepository.findAll()
     }
 
+    fun findByName(name: String): List<Anime> {
+        return animeRepository.findByName(name)
+    }
+
     fun findById(id: Long): Anime {
         return  animeRepository.findById(id).orElseThrow {
             NoSuchElementException("Anime com id $id não encontrado")

@@ -36,6 +36,12 @@ class AnimeController @Autowired constructor(private val dateUtil: DateUtil,priv
         return ResponseEntity.ok(animeService.findById(id))
     }
 
+    @GetMapping("/find")
+    fun findByName(@RequestParam name: String): ResponseEntity<List<Anime>> {
+        log.info(dateUtil.formatLocalDateTimeToDataBaseStyle(LocalDateTime.now()))
+        return ResponseEntity.ok(animeService.findByName(name))
+    }
+
     @PostMapping
     fun save(@RequestBody animePostRequestBody: AnimePostRequestBody): ResponseEntity<Anime> {
        return ResponseEntity(animeService.save(animePostRequestBody), HttpStatus.CREATED)
